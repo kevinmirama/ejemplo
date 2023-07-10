@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  :root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  
+  }
+
+  .form-label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .form-control {
+    height: 45px;
+  }
+
+  .btn {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
+
+<div class="form-container mt-5">
+  <div class="form-title mb-3">Convertir Audios a PDF</div>
+  <p>¡Convierte tus archivos de Video o Audio a PDF!</p>
+  
+  <!-- Mensaje para el usuario -->
+  <div class="alert alert-info" role="alert">
+    Por favor, asegúrate de que el texto y el audio estén en español y que el formato de audio sea WAV.
+  </div>
+  
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="files" class="form-label">Seleccionar archivos de audio a PDF</label>
+      <input type="file" class="form-control" id="files" name="files" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary">Convertir</button>
+  </form>
+</div>
+
+
+{% endblock %}

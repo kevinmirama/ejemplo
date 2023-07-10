@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <h4 style="text-align: center;">Fácil PDF</h4>
+  <div class="form-container mt-5">
+    <div class="form-title mb-3">Convertir JPG,PNG,TIFF A PDF</div>
+    <p>¡Convierte tus archivos jpg a pdf en segundos! ¡Prueba nuestro convertidor en línea ahora!</p>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="file" class="form-label">Seleccionar Archivo a convertir </label>
+        <input type="file" class="form-control" id="file" name="file" onchange="checkFileExtension(this)">
+      </div>
+      <button type="submit" class="btn btn-primary"
+        onclick="checkFileExtension(document.getElementById('file'))">Convertir</button>
+    </form>
+  </div>
+  <br>
+  <h4 style="text-align: center;">Fácil PDF</h4>
+  <div class="form-container mt-5">
+    <div class="form-title mb-3">Convertir JPG,PNG,TIFF A PDF</div>
+    <p>¡Convierte tus archivos jpg a pdf en segundos! ¡Prueba nuestro convertidor en línea ahora!</p>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="file" class="form-label">Seleccionar Archivo a convertir </label>
+        <input type="file" class="form-control" id="file" name="file" onchange="checkFileExtension(this)">
+      </div>
+      <button type="submit" class="btn btn-primary"
+        onclick="checkFileExtension(document.getElementById('file'))">Convertir</button>
+    </form>
+  </div>
+  <br>
+
+</main>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">×</span>
+    <p>Estás subiendo un archivo diferente al de jpg, png o tiff, sube un archivo válido.</p>
+  </div>
+</div>
+
+<style>
+  :root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+
+  }
+
+  .form-label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .form-control {
+    height: 45px;
+  }
+
+  .btn {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /*15% from the top and centered*/
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    /* Adjust the width */
+    height: 30%;
+    /* Adjust the height */
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function checkFileExtension(input) {
+  const file = input.files[0];
+  if (file.name.split('.').pop().toLowerCase() !== 'jpg' && file.name.split('.').pop().toLowerCase() !== 'png' && file.name.split('.').pop().toLowerCase() !== 'tiff') {
+    // Show the modal
+    modal.style.display = "block";
+    // Disable the "Convert" button
+    document.querySelector('button[type="submit"]').disabled = true;
+  } else {
+    // Hide the modal
+    modal.style.display = "none";
+    // Enable the "Convert" button
+    document.querySelector('button[type="submit"]').disabled = false;
+  }
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  :root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  
+  }
+
+  .form-label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .form-control {
+    height: 45px;
+  }
+
+  .btn {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
+
+<div class="form-container mt-5">
+  <div class="form-title mb-3">Comprimir PDF</div>
+  <p>Comprime tus Archivos al maximo</p>
+
+  
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="files" class="form-label">Seleccionar archivos a comprimir</label>
+      <input type="file" class="form-control" id="files" name="files" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary">Convertir</button>
+  </form>
+</div>
+
+
+{% endblock %}

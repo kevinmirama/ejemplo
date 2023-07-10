@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ project.name }}</h1>
+  <p>{{ project.description }}</p>
+  <a href="{% url 'project_edit' project.pk %}" class="btn btn-secondary">Edit project</a>
+  <a href="{% url 'project_report' project.pk %}" class="btn btn-info">Download report</a>
+  <h2>Tasks</h2>
+  <ul class="list-group">
+    {% for task in project.task_set.all %}
+      <li class="list-group-item"><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'task_create' %}" class="btn btn-primary mt-3">Add new task</a>
+{% endblock %}

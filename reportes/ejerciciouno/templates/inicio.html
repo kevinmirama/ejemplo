@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+  <div class="container">
+    <section>
+      <h3 style="text-align: center;">Bienvenidos a Fácil PDF</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-3" style="border-radius: 25px;">
+            <img src="/media/img/imagen.png" class="card-img-top" alt="pdf">
+            <div class="card-body">
+              <h5 class="card-title">Word a PDF</h5>
+              <p class="card-text">Convierte tus archivos de Word a PDF en unos pocos pasos simples.</p>
+              <a href="{% url 'convert_fileword' %}" class="btn btn-primary">Convertir ahora</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3" style="border-radius: 25px;">
+            <img src="/media/img/imagendos.png" class="card-img-top" alt="pdf">
+            <div class="card-body">
+              <h5 class="card-title">JPG a PDF</h5>
+              <p class="card-text">Convierte tus imágenes JPG a PDF en unos pocos pasos simples.</p>
+              <a href="{% url 'convert_file' %}" class="btn btn-primary">Convertir ahora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-3" style="border-radius: 25px;">
+            <img src="/media/img/imagentres.png" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Excel a PDF</h5>
+              <p class="card-text">Convierte tus hojas de cálculo de Excel a PDF en unos pocos pasos simples.</p>
+              <a href="{% url 'convert_fileexc' %}" class="btn btn-primary">Convertir ahora</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3" style="border-radius: 25px;">
+            <img src="/media/img/imagencuatro.png" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Txt a PDF</h5>
+              <p class="card-text">Convierte tus archivos de texto plano a PDF</p>
+              <br>
+              <a href="{% url 'convert_filetxt' %}" class= "btn btn-primary">Ver más</a> 
+            </div> 
+          </div> 
+        </div> 
+      </div> 
+    </section> 
+    <section> 
+      <div class= "row"> 
+        <div class= "col-md-6"> 
+          <div class= "card mb-3" style= "border-radius: 25px;"> 
+            <img src= "/media/img/imagencinco.png" class= "card-img-top" alt= ""> 
+            <div class= "card-body"> 
+              <h5 class= "card-title">PPT a PDF</h5> 
+              <p class= "card-text">Convierte tus hojas de cálculo de Excel a PDF en unos pocos pasos simples.</p> 
+              <a href= "{% url 'convert_fileppt' %}"class= "btn btn-primary">Convertir ahora</a> 
+            </div> 
+          </div> 
+        </div> 
+        <div class= "col-md-6"> 
+          <div class= "card mb-3" style= "border-radius: 25px;"> 
+            <img src= "/media/img/imagensiete.png"class= "card-img-top" alt=""> 
+            <div class= "card-body"> 
+              <h5 class= "card-title">AUDIO a PDF</h5> 
+              <p class= "card-text">Convierte tus Archivos de audio a PDF.</p> 
+              <br> 
+              <a href="{% url 'convert_fileaudio' %}" class= "btn btn-primary">Convertir ahora</a>  
+            </div>  
+          </div>  
+        </div>  
+  
+      </div>  
+  
+    </section>
+  
+  </div>
+  
+
+
+</body> 
+<style> 
+  .container { 
+  max-width: 800px; 
+  margin: 0 auto; 
+} 
+
+.row { 
+  margin-top: 30px; 
+} 
+
+.col-md-3 { 
+  text-align: center; 
+} 
+
+.card { 
+  margin-bottom: 30px; 
+} 
+.card-body { 
+  text-align: center; 
+} 
+
+.btn-primary {
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+}
+
+.btn-primary:hover {
+    background-color: #1c2331;
+    border-color: #1c2331;
+}
+
+body {
+    background-color: #ced4da;
+}
+
+</style> 
+
+
+{% endblock %}

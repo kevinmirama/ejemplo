@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <title>Project Manager</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-custom">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="margin-top: 15px;">
+        <ul class="navbar-nav">
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'img/logofinal.png' %}" alt="" width="200" height="50"
+              class="d-inline-block align-text-top" style="margin-top: -10px;">
+          </a>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'comofunciona' %}">¿Cómo funciona?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'caracteristicas' %}"><i class="fas fa-folder-open me-2"></i>Caracteristicas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'task_list' %}"><i class="fas fa-tasks me-2"></i>Tasks</a>
+          </li>
+          <!-- Agrega más opciones al menú -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'project_create' %}"><i class="fas fa-plus me-2"></i>New Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'task_create' %}"><i class="fas fa-plus me-2"></i>New Task</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'convert_file' %}"><i class="fas fa-plus me-2"></i>Convertir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <style>
+    .bg-custom {
+      background-color: #1c2331;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: #ced4da;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+        background-color: #ced4da;
+        margin-top: 90px;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+
+    }
+
+    footer a {
+      color: #ced4da;
+
+    }
+
+    footer {
+      background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+      }
+
+    main {
+      flex: 1;
+    }
+
+    :root {
+      --bs-primary: #f0ad4e;
+      --bs-secondary: #6c757d;
+      --bs-success: #5cb85c;
+      --bs-danger: #dc3545;
+      --bs-warning: #ffc107;
+      --bs-info: #17a2b8;
+      --bs-light: #f8f9fa;
+      --bs-dark: #343a40;
+    }
+
+    nav.navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1030;
+    }
+    .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .social-media a {
+    color: #fff;
+    margin-right: 10px;
+    font-size: 24px;
+  }
+
+  .social-media a:hover {
+    color: #007bff;
+  }
+
+</style>
+
+  <div class="container mt-3">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+ <footer>
+  <div class="footer-container">
+    <div class="social-media">
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <p style="text-align: center;">© 2023 Todos los derechos reservados</p>
+  </div>
+ </footer>
+
+</body>
+
+</html>

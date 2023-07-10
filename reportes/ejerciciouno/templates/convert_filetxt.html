@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  :root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  
+  }
+
+  .form-label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .form-control {
+    height: 45px;
+  }
+
+  .btn {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
+
+<div class="form-container mt-5">
+  <div class="form-title mb-3">Cargar archivos</div>
+  <div class="form-title mb-3">Convertir TXT A PDF</div>
+  <p>¡Carga tus archivos TXT para convertirlos a PDF en segundos! ¡Prueba nuestro convertidor en línea totalmente gratis!</p>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="files" class="form-label">Seleccionar archivos a convertir</label>
+      <input type="file" class="form-control" id="files" name="files" multiple onchange="checkFileExtensions(this)">
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="checkFileExtensions(document.getElementById('files'))">Convertir</button>
+  </form>
+</div>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">×</span>
+    <p>Estás subiendo un archivo diferente al de ppt, sube un archivo válido.</p>
+  </div>
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function checkFileExtensions(input) {
+    // Obtener la lista de archivos seleccionados
+    const files = input.files;
+    // Verificar si todos los archivos son válidos
+    let allValid = true;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (file.name.split('.').pop().toLowerCase() !== 'txt'
+      ) {
+        allValid = false;
+        break;
+      }
+    }
+    if (!allValid) {
+      // Show the modal
+      modal.style.display = "block";
+      // Disable the "Convert" button
+      document.querySelector('button[type="submit"]').disabled = true;
+    } else {
+      // Hide the modal
+      modal.style.display = "none";
+      // Enable the "Convert" button
+      document.querySelector('button[type="submit"]').disabled = false;
+    }
+  }
+</script>
+
+
+
+
+{% endblock %}
